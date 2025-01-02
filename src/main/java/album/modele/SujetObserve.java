@@ -1,6 +1,7 @@
-package me.gap.pcdalbum.album.modele;
+package album.modele;
 
-import me.gap.pcdalbum.album.vues.*;
+import album.vues.Observateur;
+import album.vues.*;
 import java.util.ArrayList;
 
 public class SujetObserve {

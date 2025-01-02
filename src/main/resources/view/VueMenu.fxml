@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<MenuBar BorderPane.alignment="CENTER" fx:controller="album.vues.VueMenu" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <menus>
+        <Menu mnemonicParsing="false" text="Album">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#creerAlbum" text="Nouvel album" />
+                <MenuItem mnemonicParsing="false" onAction="#ouvrirAlbum" text="Ouvrir" />
+                <MenuItem mnemonicParsing="false" onAction="#sauvegarderAlbum" text="Sauvegarder" />
+                <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Outils">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#nommerAlbum" text="Nommer l'album" />
+                <MenuItem fx:id="boutonSwitchMode" mnemonicParsing="false" onAction="#switchMode" text="Mode Vignettes" />
+            </items>
+        </Menu>
+    </menus>
+</MenuBar>

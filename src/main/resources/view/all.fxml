@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER" fx:controller="vues.VueMenu">
+        <menus>
+          <Menu mnemonicParsing="false" text="Album">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#creerAlbum" text="Nouvel album" />
+                  <MenuItem mnemonicParsing="false" onAction="#ouvrirAlbum" text="Ouvrir" />
+                  <MenuItem mnemonicParsing="false" onAction="#sauvegarderAlbum" text="Sauvegarder" />
+                  <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Outils">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#nommerAlbum" text="Nommer l'album" />
+                  <MenuItem fx:id="boutonSwitchMode" mnemonicParsing="false" onAction="#switchMode" text="Mode Vignettes" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox alignment="CENTER" maxWidth="400.0" minWidth="400.0" prefHeight="200.0" prefWidth="200.0" fx:controller="vues.VuePages">
+         <children>
+            <Label fx:id="ajouterPhotosTitre" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#ajouterPhotos" text="Ajouter des photos">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding></Label>
+            <MediaView fitHeight="200.0" fitWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </VBox.margin></MediaView>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <VBox alignment="CENTER" maxWidth="600.0" minWidth="600.0" BorderPane.alignment="CENTER_LEFT" fx:controller="vues.VuePhotos">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label fx:id="nomGauche" onMouseClicked="#modifierNomGauche" text="Image 1" />
+                        <ImageView fx:id="imageGauche" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#modifierImageGauche" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label fx:id="nomDroit" onMouseClicked="#modifierNomDroit" text="Image 2" />
+                        <ImageView fx:id="imageDroite" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#modifierImageDroite" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0">
+               <children>
+                  <Label fx:id="nomAlbum" onMouseClicked="#modifierNomAlbum" text="Album Mon album photo" />
+                  <Label fx:id="pagesActuelles" onMouseClicked="#modifierPagesActuelles" text="Pages 1-2 sur 4" />
+               </children>
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="flecheGauche" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#deplacementGauche" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="flecheDroite" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#deplacementDroit" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="boutonPlus" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#creerPages" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="boutonMoins" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#supprimerPages" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <MediaView fitHeight="200.0" fitWidth="200.0" BorderPane.alignment="CENTER" fx:controller="vues.VueVignettes" visible="false"/>
+   </right>
+</BorderPane>

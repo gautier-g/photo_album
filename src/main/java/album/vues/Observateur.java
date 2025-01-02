@@ -1,4 +1,4 @@
-package me.gap.pcdalbum.album.vues;
+package album.vues;
 
 public interface Observateur {
     public void reagir();
