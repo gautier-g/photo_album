@@ -1,0 +1,78 @@
+@startuml
+package album <<Folder>> {
+    package modele <<Folder>> {
+        class SujetObserve {
+            +void ajouterObservateur(Observateur obs)
+            +void notifierObservateurs()
+        }
+    }
+
+    package vues <<Folder>> {
+        interface Observateur {
+            +void reagir()
+        }
+
+        class VueMenu implements Observateur {
+            -MenuItem boutonSwitchMode
+            -SujetObserve sujetObserve
+
+            +VueMenu(SujetObserve sujetObserve)
+            +void reagir()
+            +void creerAlbum()
+            +void ouvrirAlbum()
+            +void sauvegarderAlbum()
+            +void quitter()
+
+            +void nommerAlbum()
+            +void switchMode()
+        }
+
+        class VuePages implements Observateur {
+            -Label ajouterPhotosTitre
+            -SujetObserve sujetObserve
+
+            +VuePages(Sujetobserve sujetObserve)
+            +void reagir()
+            +void ajouterPhotos()
+        }
+
+        class VuePhotos implements Observateur {
+            -Label nomGauche
+            -ImageView imageGauche
+            -Label nomDroit
+            -ImageView imageDroite
+            -Label nomAlbum
+            -Label pagesActuelles
+            -ImageView flecheGauche
+            -ImageView flecheDroite
+            -ImageView boutonPlus
+            -ImageView boutonMoins
+            -SujetObserve sujetObserve
+
+            +VuePhotos(SujetObserve sujetObserve)
+            +void reagir()
+            +void modifierNomGauche()
+            +void modifierImageGauche()
+            +void modifierNomDroit()
+            +void modifierImageDroite()
+            +void modifierNomAlbum()
+            +void modifierPagesActuelles()
+            +void deplacementGauche()
+            +void deplacementDroit()
+            +void creerPages()
+            +void supprimerPages()
+        }
+
+        class VueVignettes implements Observateur {
+            -SujetObserve sujetObserve
+
+            +VueVignettes(SujetObserve sujetObserve)
+            +void reagir()
+        }
+    }
+
+    SujetObserve "1"--"*" Observateur
+}
+
+
+@enduml
