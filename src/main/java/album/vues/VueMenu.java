@@ -2,9 +2,7 @@ package album.vues;
 
 import album.modele.SujetObserve;
 import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
-
-import java.awt.*;
+import javafx.scene.control.MenuItem;
 
 public class VueMenu implements Observateur {
     @FXML
