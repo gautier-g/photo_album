@@ -12,13 +12,13 @@
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <children>
                         <Label fx:id="nomGauche" onMouseClicked="#modifierNomGauche" text="Image 1" />
-                        <ImageView fx:id="imageGauche" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#modifierImageGauche" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageGauche" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <children>
                         <Label fx:id="nomDroit" onMouseClicked="#modifierNomDroit" text="Image 2" />
-                        <ImageView fx:id="imageDroite" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#modifierImageDroite" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageDroite" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </VBox>
             </children>
@@ -29,7 +29,7 @@
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0">
             <children>
                 <Label fx:id="nomAlbum" text="Album Mon album photo" />
-                <Label fx:id="pagesActuelles" onMouseClicked="#modifierPagesActuelles" text="Pages 1-2 sur 4" />
+                <Label fx:id="pagesActuelles" text="Pages 1-2 sur 4" />
             </children>
             <padding>
                 <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />

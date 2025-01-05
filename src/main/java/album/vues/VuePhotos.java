@@ -14,8 +14,6 @@ import java.io.File;
 
 public class VuePhotos implements Observateur {
     @FXML
-    private Label ajouterPhotosTitre;
-    @FXML
     private FlowPane listePhotos;
 
     private SujetObserve sujetObserve;

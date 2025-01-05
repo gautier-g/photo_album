@@ -8,6 +8,7 @@ public class SujetObserve {
     private ArrayList<DoublePage> pagesAlbum;
     private ArrayList<String> photosAlbum;
     private int pageAffichee;
+    private String nomAlbum;
 
     private ArrayList<Observateur> observateurs;
 
@@ -24,17 +25,31 @@ public class SujetObserve {
     public ArrayList<DoublePage> getPagesAlbum() {
         return pagesAlbum;
     }
-    public void removePageAlbum(ArrayList<DoublePage> pagesAlbum, int index) {
-        this.pagesAlbum.remove(pagesAlbum.get(index));
+    public void removePageAlbum(int index) {
+        this.pagesAlbum.remove(this.pagesAlbum.get(index));
     }
-    public void addPageAlbum(ArrayList<DoublePage> pagesAlbum) {
-        this.pagesAlbum.add(new DoublePage("Image 1", getClass().getResource("/image_basique_1"), "Image 2", getClass().getResource("/image_basique_2")));
+    public void addPageAlbum() {
+        this.pagesAlbum.add(new DoublePage("Image 1", getClass().getResource("/image_basique_1.jpg"), "Image 2", getClass().getResource("/image_basique_2.jpg")));
     }
     public ArrayList<String> getPhotosAlbum() {
         return photosAlbum;
     }
     public void addPhotosAlbum(String photo) {
         this.photosAlbum.add(photo);
+    }
+
+    public int getPageAffichee() {
+        return pageAffichee;
+    }
+    public void setPageAffichee(int pageAffichee) {
+        this.pageAffichee = pageAffichee;
+    }
+
+    public String getNomAlbum() {
+        return nomAlbum;
+    }
+    public void setNomAlbum(String nomAlbum) {
+        this.nomAlbum = nomAlbum;
     }
 
     public SujetObserve() {
@@ -51,5 +66,6 @@ public class SujetObserve {
         this.photosAlbum.add(getClass().getResource("/image_basique_2.jpg").toString());
         this.photosAlbum.add(getClass().getResource("/image_basique_3.jpg").toString());
         this.photosAlbum.add(getClass().getResource("/image_basique_4.jpg").toString());
+        this.nomAlbum = "Mon album photo";
     }
 }

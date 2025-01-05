@@ -1,6 +1,7 @@
 package album.vues;
 
 import album.modele.SujetObserve;
+import album.pages.DoublePage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -48,7 +49,35 @@ public class VuePages implements Observateur {
 
     @Override
     public void reagir() {
+        int pagesActuelles = sujetObserve.getPageAffichee();
+        DoublePage doublePage = sujetObserve.getPagesAlbum().get(pagesActuelles);
+        this.nomGauche.setText(doublePage.getTitreGauche());
+        this.nomDroit.setText(doublePage.getTitreDroit());
+        this.imageGauche.setImage(new Image(doublePage.getCheminImageGauche().toString()));
+        this.imageDroite.setImage(new Image(doublePage.getCheminImageDroite().toString()));
+        this.nomAlbum.setText("Album: " + sujetObserve.getNomAlbum());
+        this.pagesActuelles.setText("Pages " + (pagesActuelles*2+1) + "-" + (pagesActuelles*2+2) + " sur " + sujetObserve.getPagesAlbum().size()*2);
 
+        if (this.sujetObserve.getPagesAlbum().size() <= 2) {
+            this.boutonMoins.setOpacity(0.2);
+        }
+        else {
+            this.boutonMoins.setOpacity(1);
+        }
+
+        if (this.sujetObserve.getPagesAlbum().size() - 1 == this.sujetObserve.getPageAffichee()) {
+            this.flecheDroite.setImage(new Image(getClass().getResource("/fleche_partielle.jpg").toString()));
+        }
+        else {
+            this.flecheDroite.setImage(new Image(getClass().getResource("/fleche_remplie.jpg").toString()));
+        }
+
+        if (0 == this.sujetObserve.getPageAffichee()) {
+            this.flecheGauche.setImage(new Image(getClass().getResource("/fleche_partielle.jpg").toString()));
+        }
+        else {
+            this.flecheGauche.setImage(new Image(getClass().getResource("/fleche_remplie.jpg").toString()));
+        }
     }
 
     public String creerPopUp() {
@@ -75,13 +104,9 @@ public class VuePages implements Observateur {
             montrerAlerte("Nom trop long (20 charactères maximum)");
         }
         else {
-            this.nomGauche.setText(nom);
+            this.sujetObserve.getPagesAlbum().get(this.sujetObserve.getPageAffichee()).setTitreGauche(nom);
+            reagir();
         }
-    }
-
-    @FXML
-    public void modifierImageGauche() {
-
     }
 
     @FXML
@@ -91,37 +116,38 @@ public class VuePages implements Observateur {
             montrerAlerte("Nom trop long (20 charactères maximum)");
         }
         else {
-            this.nomDroit.setText(nom);
+            this.sujetObserve.getPagesAlbum().get(this.sujetObserve.getPageAffichee()).setTitreDroit(nom);
+            reagir();
         }
     }
 
     @FXML
-    public void modifierImageDroite() {
-
-    }
-
-    @FXML
-    public void modifierPagesActuelles() {
-
-    }
-
-    @FXML
     public void deplacementGauche() {
-
+        if (this.sujetObserve.getPageAffichee() > 0) {
+            sujetObserve.setPageAffichee(this.sujetObserve.getPageAffichee()-1);
+            reagir();
+        }
     }
 
     @FXML
     public void deplacementDroit() {
-
+        if (this.sujetObserve.getPageAffichee() < this.sujetObserve.getPagesAlbum().size() - 1) {
+            sujetObserve.setPageAffichee(this.sujetObserve.getPageAffichee()+1);
+            reagir();
+        }
     }
 
     @FXML
     public void creerPages() {
-
+        this.sujetObserve.addPageAlbum();
+        this.sujetObserve.setPageAffichee(this.sujetObserve.getPagesAlbum().size() - 1);
+        reagir();
     }
 
     @FXML
     public void supprimerPages() {
-
+        this.sujetObserve.removePageAlbum(this.sujetObserve.getPageAffichee());
+        this.sujetObserve.setPageAffichee(0);
+        reagir();
     }
 }
