@@ -23,7 +23,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/VuePhotos.fxml"));
-        loader.setControllerFactory(iC->new VuePhotos(sujetObserve));
+        loader.setControllerFactory(iC->new VuePhotos(sujetObserve, stage));
         root.setCenter(loader.load());
 
         FXMLLoader loader2 = new FXMLLoader();
@@ -40,6 +40,8 @@ public class Main extends Application {
         loader4.setLocation(getClass().getResource("/view/VueVignettes.fxml"));
         loader4.setControllerFactory(iC->new VueVignettes(sujetObserve));
         root.setRight(loader4.load());
+
+        sujetObserve.notifierObservateurs();
 
         Scene scene = new Scene(root, 1000, 1000);
         stage.setTitle("Album photo");
