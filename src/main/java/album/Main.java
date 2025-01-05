@@ -33,7 +33,7 @@ public class Main extends Application {
 
         FXMLLoader loader3 = new FXMLLoader();
         loader3.setLocation(getClass().getResource("/view/VueMenu.fxml"));
-        loader3.setControllerFactory(iC->new VueMenu(sujetObserve));
+        loader3.setControllerFactory(iC->new VueMenu(sujetObserve, stage));
         root.setTop(loader3.load());
 
         FXMLLoader loader4 = new FXMLLoader();

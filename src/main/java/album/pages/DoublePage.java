@@ -3,10 +3,10 @@ package album.pages;
 import java.net.URL;
 
 public class DoublePage {
-    private String titreGauche;
-    private URL cheminImageGauche;
-    private String titreDroit;
-    private URL cheminImageDroite;
+    public String titreGauche;
+    public URL cheminImageGauche;
+    public String titreDroit;
+    public URL cheminImageDroite;
 
     public String getTitreGauche() {
         return titreGauche;

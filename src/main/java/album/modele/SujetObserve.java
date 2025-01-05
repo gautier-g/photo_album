@@ -3,14 +3,27 @@ package album.modele;
 import album.pages.DoublePage;
 import album.vues.Observateur;
 
+import java.beans.Transient;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 public class SujetObserve {
+    @Expose
     private ArrayList<DoublePage> pagesAlbum;
+    @Expose
     private ArrayList<URL> photosAlbum;
+    @Expose
     private int pageAffichee;
+    @Expose
     private String nomAlbum;
+    @Expose
     private boolean mode_normal;
 
     private ArrayList<Observateur> observateurs;
@@ -28,6 +41,15 @@ public class SujetObserve {
     public ArrayList<DoublePage> getPagesAlbum() {
         return pagesAlbum;
     }
+
+    public void setPagesAlbum(ArrayList<DoublePage> pagesAlbum) {
+        this.pagesAlbum = pagesAlbum;
+    }
+
+    public void setPhotosAlbum(ArrayList<URL> photosAlbum) {
+        this.photosAlbum = photosAlbum;
+    }
+
     public void removePageAlbum(int index) {
         this.pagesAlbum.remove(this.pagesAlbum.get(index));
     }
@@ -77,5 +99,26 @@ public class SujetObserve {
         this.photosAlbum.add(getClass().getResource("/image_basique_4.jpg"));
         this.nomAlbum = "Mon album photo";
         this.mode_normal = true;
+    }
+
+    public void sauvegarderDansFichierJSON(File file) {
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(this, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static SujetObserve ouvrirAlbumDepuisJSON(String filename) {
+        Gson gson = new Gson();
+
+        try (FileReader reader = new FileReader(filename)) {
+            return gson.fromJson(reader, SujetObserve.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
