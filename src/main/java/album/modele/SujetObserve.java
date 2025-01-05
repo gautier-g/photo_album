@@ -2,11 +2,13 @@ package album.modele;
 
 import album.pages.DoublePage;
 import album.vues.Observateur;
+
+import java.net.URL;
 import java.util.ArrayList;
 
 public class SujetObserve {
     private ArrayList<DoublePage> pagesAlbum;
-    private ArrayList<String> photosAlbum;
+    private ArrayList<URL> photosAlbum;
     private int pageAffichee;
     private String nomAlbum;
     private boolean mode_normal;
@@ -32,10 +34,10 @@ public class SujetObserve {
     public void addPageAlbum() {
         this.pagesAlbum.add(new DoublePage("Image 1", getClass().getResource("/image_basique_1.jpg"), "Image 2", getClass().getResource("/image_basique_2.jpg")));
     }
-    public ArrayList<String> getPhotosAlbum() {
+    public ArrayList<URL> getPhotosAlbum() {
         return photosAlbum;
     }
-    public void addPhotosAlbum(String photo) {
+    public void addPhotosAlbum(URL photo) {
         this.photosAlbum.add(photo);
     }
 
@@ -69,10 +71,10 @@ public class SujetObserve {
         this.pageAffichee = 0;
         this.observateurs = new ArrayList<>();
         this.photosAlbum = new ArrayList<>();
-        this.photosAlbum.add(getClass().getResource("/image_basique_1.jpg").toString());
-        this.photosAlbum.add(getClass().getResource("/image_basique_2.jpg").toString());
-        this.photosAlbum.add(getClass().getResource("/image_basique_3.jpg").toString());
-        this.photosAlbum.add(getClass().getResource("/image_basique_4.jpg").toString());
+        this.photosAlbum.add(getClass().getResource("/image_basique_1.jpg"));
+        this.photosAlbum.add(getClass().getResource("/image_basique_2.jpg"));
+        this.photosAlbum.add(getClass().getResource("/image_basique_3.jpg"));
+        this.photosAlbum.add(getClass().getResource("/image_basique_4.jpg"));
         this.nomAlbum = "Mon album photo";
         this.mode_normal = true;
     }

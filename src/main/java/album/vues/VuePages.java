@@ -54,9 +54,11 @@ public class VuePages implements Observateur {
     public void reagir() {
         if (this.sujetObserve.isMode_normal()) {
             self.setVisible(true);
+            self.setManaged(true);
         }
         else {
             self.setVisible(false);
+            self.setManaged(false);
         }
 
         int pagesActuelles = sujetObserve.getPageAffichee();

@@ -3,8 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="album.vues.VueVignettes" fx:id="self">
+<ScrollPane fx:id="self" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="album.vues.VueVignettes">
    <content>
-      <FlowPane prefHeight="800.0" prefWidth="1000.0" />
+      <FlowPane fx:id="flowPane" prefHeight="950.0" prefWidth="1000.0" />
    </content>
 </ScrollPane>
