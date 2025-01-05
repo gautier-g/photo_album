@@ -12,6 +12,7 @@ public class VueMenu implements Observateur {
 
     public VueMenu(SujetObserve sujetObserve) {
         this.sujetObserve = sujetObserve;
+        sujetObserve.ajouterObservateur(this);
     }
 
     @Override

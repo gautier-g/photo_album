@@ -7,6 +7,7 @@ public class VueVignettes implements Observateur {
 
     public VueVignettes(SujetObserve sujetObserve) {
         this.sujetObserve = sujetObserve;
+        sujetObserve.ajouterObservateur(this);
     }
 
     @Override
