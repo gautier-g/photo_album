@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.media.MediaView?>
 
-<MediaView fitHeight="200.0" fitWidth="200.0" BorderPane.alignment="CENTER" fx:controller="album.vues.VueVignettes" visible="false" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"/>
-
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="album.vues.VueVignettes" fx:id="self">
+   <content>
+      <FlowPane prefHeight="800.0" prefWidth="1000.0" />
+   </content>
+</ScrollPane>

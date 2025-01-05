@@ -8,8 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 public class VuePages implements Observateur {
+    @FXML
+    private VBox self;
     @FXML
     private Label nomGauche;
     @FXML
@@ -49,6 +52,13 @@ public class VuePages implements Observateur {
 
     @Override
     public void reagir() {
+        if (this.sujetObserve.isMode_normal()) {
+            self.setVisible(true);
+        }
+        else {
+            self.setVisible(false);
+        }
+
         int pagesActuelles = sujetObserve.getPageAffichee();
         DoublePage doublePage = sujetObserve.getPagesAlbum().get(pagesActuelles);
         this.nomGauche.setText(doublePage.getTitreGauche());

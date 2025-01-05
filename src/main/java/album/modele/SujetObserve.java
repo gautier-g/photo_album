@@ -9,6 +9,7 @@ public class SujetObserve {
     private ArrayList<String> photosAlbum;
     private int pageAffichee;
     private String nomAlbum;
+    private boolean mode_normal;
 
     private ArrayList<Observateur> observateurs;
 
@@ -51,6 +52,12 @@ public class SujetObserve {
     public void setNomAlbum(String nomAlbum) {
         this.nomAlbum = nomAlbum;
     }
+    public boolean isMode_normal() {
+        return mode_normal;
+    }
+    public void setMode_normal(boolean mode_normal) {
+        this.mode_normal = mode_normal;
+    }
 
     public SujetObserve() {
         DoublePage doublePage1 = new DoublePage("Image 1", getClass().getResource("/image_basique_1.jpg"), "Image 2", getClass().getResource("/image_basique_2.jpg"));
@@ -67,5 +74,6 @@ public class SujetObserve {
         this.photosAlbum.add(getClass().getResource("/image_basique_3.jpg").toString());
         this.photosAlbum.add(getClass().getResource("/image_basique_4.jpg").toString());
         this.nomAlbum = "Mon album photo";
+        this.mode_normal = true;
     }
 }

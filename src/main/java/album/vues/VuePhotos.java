@@ -14,6 +14,8 @@ import java.io.File;
 
 public class VuePhotos implements Observateur {
     @FXML
+    private VBox self;
+    @FXML
     private FlowPane listePhotos;
 
     private SujetObserve sujetObserve;
@@ -27,6 +29,12 @@ public class VuePhotos implements Observateur {
 
     @Override
     public void reagir() {
+        if (this.sujetObserve.isMode_normal()) {
+            self.setVisible(true);
+        }
+        else {
+            self.setVisible(false);
+        }
         listePhotos.getChildren().clear();
         for (int i = 0; i<sujetObserve.getPhotosAlbum().size(); i++) {
             ImageView imageView = new ImageView(sujetObserve.getPhotosAlbum().get(i));
