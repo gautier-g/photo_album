@@ -49,6 +49,22 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
 }
 
+task fatJar(type:org.gradle.jvm.tasks.Jar) {
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+
+    from { configurations.runtimeClasspath.findAll { it.name.contains('gson') }.collect { it.isDirectory() ? it : zipTree(it) } }
+
+    manifest {
+        attributes(
+                'Main-Class': 'album.Main'
+        )
+    }
+
+    archiveBaseName.set('album')
+}
+
+
 application {
     mainClass.set("album.Main")
 }
