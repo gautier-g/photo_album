@@ -48,6 +48,7 @@ public class VuePages implements Observateur {
         boutonPlus.setImage(new Image(String.valueOf(getClass().getResource("/symbole_plus.jpg"))));
         boutonMoins.setImage(new Image(String.valueOf(getClass().getResource("/symbole_moins.jpg"))));
         boutonMoins.setOpacity(0.2);
+        self.getChildren().add(new Label("Cliquez sur Image1 ou Image2 pour les modifier"));
     }
 
     @Override

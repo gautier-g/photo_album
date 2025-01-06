@@ -4,6 +4,7 @@ import album.modele.SujetObserve;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.DirectoryChooser;
@@ -53,7 +54,13 @@ public class VueMenu implements Observateur {
     }
 
     public void creerAlbum() {
-        this.sujetObserve = new SujetObserve();
+        SujetObserve sujetObserve2 = new SujetObserve();
+        this.sujetObserve.setPagesAlbum(sujetObserve2.getPagesAlbum());
+        this.sujetObserve.setMode_normal(sujetObserve2.isMode_normal());
+        this.sujetObserve.setPhotosAlbum(sujetObserve2.getPhotosAlbum());
+        this.sujetObserve.setPageAffichee(sujetObserve2.getPageAffichee());
+        this.sujetObserve.setNomAlbum(sujetObserve2.getNomAlbum());
+        this.sujetObserve.notifierObservateurs();
     }
 
     public void ouvrirAlbum() {
@@ -82,10 +89,22 @@ public class VueMenu implements Observateur {
             File file = new File(selectedDirectory, "album.json");
             this.sujetObserve.sauvegarderDansFichierJSON(file);
         }
+        this.sujetObserve.setEst_modifie(false);
         this.sujetObserve.notifierObservateurs();
     }
 
     public void quitter() {
+        if (this.sujetObserve.isEst_modifie()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Voulez-vous sauvegarder ?");
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    sauvegarderAlbum();
+                }
+            });
+        }
         Platform.exit();
     }
 

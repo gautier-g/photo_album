@@ -1,12 +1,18 @@
 package album.pages;
 
+import com.google.gson.annotations.Expose;
+
 import java.net.URL;
 
 public class DoublePage {
-    public String titreGauche;
-    public URL cheminImageGauche;
-    public String titreDroit;
-    public URL cheminImageDroite;
+    @Expose
+    private String titreGauche;
+    @Expose
+    private URL cheminImageGauche;
+    @Expose
+    private String titreDroit;
+    @Expose
+    private URL cheminImageDroite;
 
     public String getTitreGauche() {
         return titreGauche;
